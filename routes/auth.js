@@ -9,7 +9,6 @@ router.get("/signup", (req, res) => {
   res.render("prod_management/signup");
 });
 
-// Signup
 router.post("/signup", userController.create);
 
 // Signin
