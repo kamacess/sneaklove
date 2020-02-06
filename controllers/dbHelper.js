@@ -1,0 +1,84 @@
+const userModel = require("./../models/User");
+const tagModel = require("./../models/Tag");
+const sneakerModel = require("./../models/Sneaker");
+
+// User CRUD Handlers
+function userCreate(userData) {
+  return userModel.create(userData);
+}
+
+function userView(id) {
+  return userModel.findById(id);
+}
+
+function userViewAll() {
+  return userModel.find();
+}
+
+function userDelete(id) {
+  return userModel.findOneAndDelete(id);
+}
+
+function userEdit(id, userData) {
+  return userModel.findOneAndUpdate(id, userData);
+}
+
+// Tag CRUD Handlers
+function tagCreate(tagData) {
+  return tagModel.create(tagData);
+}
+
+function tagView(id) {
+  return tagModel.findById(id);
+}
+
+function tagViewAll() {
+  return tagModel.find();
+}
+
+function tagDelete(id) {
+  return tagModel.findByIdAndDelete(id);
+}
+
+function tagEdit(id, tagData) {
+  return tagModel.findByIdAndUpdate(id, tagData);
+}
+
+// Sneaker CRUD Handlers
+function sneakerCreate(sneakerData) {
+  return sneakerModel.create(sneakerData);
+}
+
+function sneakerView(id) {
+  return sneakerModel.findById(id);
+}
+
+function sneakerViewAll() {
+  return sneakerModel.find();
+}
+
+function sneakerDelete(id) {
+  return sneakerModel.findByIdAndDelete(id);
+}
+
+function sneakerEdit(id, sneakerData) {
+  return sneakerModel.findByIdAndUpdate(id, sneakerData);
+}
+
+module.exports = {
+  userCreate,
+  userView,
+  userViewAll,
+  userDelete,
+  userEdit,
+  tagCreate,
+  tagView,
+  tagViewAll,
+  tagDelete,
+  tagEdit,
+  sneakerCreate,
+  sneakerView,
+  sneakerViewAll,
+  sneakerDelete,
+  sneakerEdit
+};
