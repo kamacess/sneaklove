@@ -21,7 +21,6 @@ const path = require("path");
 // app.use(express.json());
 // app.use(cookieParser());
 
-
 //config BW
 app.use(express.urlencoded({ extended: true })); // parse posted data
 app.use(express.json()); // ajax ready
@@ -30,8 +29,6 @@ app.use(express.static(path.join(__dirname, "public"))); // static files (public
 app.set("views", path.join(__dirname, "views")); // wahre are the pages ?
 app.set("view engine", "hbs"); // which template engine
 hbs.registerPartials(path.join(__dirname, "views/partials")); // where are the tiny chunks of views ?
-
-
 
 // SESSION SETUP
 app.use(
@@ -90,8 +87,8 @@ app.use(eraseSessionMessage());
 app.use("/", require("./routes"));
 app.use(require("./routes/auth"));
 app.use("/products", require("./routes/products"));
-
 app.use("/users", require("./routes/users"));
+app.use("/tags", require("./routes/tags"));
 
 // Export app
 module.exports = app;

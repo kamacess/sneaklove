@@ -40,6 +40,10 @@ function tagViewAll() {
   return tagModel.find();
 }
 
+function tagFindByName(name) {
+  return tagModel.findOne({ name: name });
+}
+
 function tagDelete(id) {
   return tagModel.findByIdAndDelete(id);
 }
@@ -79,6 +83,7 @@ module.exports = {
   tagCreate,
   tagView,
   tagViewAll,
+  tagFindByName,
   tagDelete,
   tagEdit,
   sneakerCreate,
