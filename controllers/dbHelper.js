@@ -11,16 +11,20 @@ function userView(id) {
   return userModel.findById(id);
 }
 
+function userFindByEmail(email) {
+  return userModel.findOne({ email: email });
+}
+
 function userViewAll() {
   return userModel.find();
 }
 
 function userDelete(id) {
-  return userModel.findOneAndDelete(id);
+  return userModel.findByIdAndDelete(id);
 }
 
 function userEdit(id, userData) {
-  return userModel.findOneAndUpdate(id, userData);
+  return userModel.findByIdAndUpdate(id, userData);
 }
 
 // Tag CRUD Handlers
@@ -69,6 +73,7 @@ module.exports = {
   userCreate,
   userView,
   userViewAll,
+  userFindByEmail,
   userDelete,
   userEdit,
   tagCreate,

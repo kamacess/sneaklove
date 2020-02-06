@@ -1,4 +1,5 @@
 const db = require("./dbHelper");
+const bcrypt = require("bcryptjs");
 
 exports.view = async (req, res, next) => {
   try {
@@ -24,14 +25,14 @@ exports.create = async (req, res, next) => {
   try {
     const { firstname, lastname, email, password } = req.body;
     if (!firstname || !lastname || !email || !password) throw new Error("All fields are required.");
-    const user = await db.userView(email);
+    const user = await db.userFindByEmail(email);
     if (user) throw new Error("There is already a user with this email.");
-
+    const hashedPassword = bcrypt.hashSync(password, 10);
     const createdUser = await db.userCreate({
       firstname,
       lastname,
       email,
-      password
+      password: hashedPassword
     });
     console.log(createdUser);
     res.json(createdUser);
@@ -44,8 +45,7 @@ exports.edit = async (req, res, next) => {
   try {
     const id = req.params.id;
     const { firstname, lastname, email, password } = req.body;
-    const editedUser = await db.userEdit({
-      id,
+    const editedUser = await db.userEdit(id, {
       firstname,
       lastname,
       email,
