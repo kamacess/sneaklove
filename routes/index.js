@@ -5,7 +5,7 @@ const userController = require("./../controllers/user");
 
 
 router.get("/", (req, res) => {
-  res.send("This is the home page");
+  res.render("index");
 });
 
 // router.get("/sneakers/:cat", (req, res) => {

@@ -7,7 +7,7 @@ const tagModel = require("../models/Tag")
 // ROUTES PREFIXEES AVEC "/products"
 // *********************************/
 
-router.get("/all", (req, res, next) => {
+router.get("/collection", (req, res, next) => {
     // sneakerModel
     //     .find()
     //     .then(dbResults => {
@@ -16,7 +16,43 @@ router.get("/all", (req, res, next) => {
     //         });
     //     })
     //     .catch(next);
-    res.send("All sneakers models")
+    res.render("products")
+})
+
+router.get("/men", (req, res, next) => {
+    // sneakerModel
+    //     .find()
+    //     .then(dbResults => {
+    //         res.render("products.hbs", {
+    //             products: dbResults
+    //         });
+    //     })
+    //     .catch(next);
+    res.render("products-men")
+})
+
+router.get("/women", (req, res, next) => {
+    // sneakerModel
+    //     .find()
+    //     .then(dbResults => {
+    //         res.render("products.hbs", {
+    //             products: dbResults
+    //         });
+    //     })
+    //     .catch(next);
+    res.render("products-women")
+})
+
+router.get("/kids", (req, res, next) => {
+    // sneakerModel
+    //     .find()
+    //     .then(dbResults => {
+    //         res.render("products.hbs", {
+    //             products: dbResults
+    //         });
+    //     })
+    //     .catch(next);
+    res.render("products-kids")
 })
 
 router.get("/one/:id", (req, res, next) => {
