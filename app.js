@@ -89,8 +89,9 @@ app.use(eraseSessionMessage());
 // routing
 app.use("/", require("./routes"));
 app.use(require("./routes/auth"));
-app.use("/products", require("./routes/products"))
+app.use("/products", require("./routes/products"));
 
+app.use("/users", require("./routes/users"));
 
 // Export app
 module.exports = app;
