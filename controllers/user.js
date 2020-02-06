@@ -35,7 +35,8 @@ exports.create = async (req, res, next) => {
       password: hashedPassword
     });
     console.log(createdUser);
-    res.json(createdUser);
+    //res.json(createdUser);
+    res.redirect("/products_manage")
   } catch (error) {
     res.json(error);
   }

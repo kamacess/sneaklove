@@ -51,16 +51,15 @@ router.get("/kids", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/one/:id", (req, res, next) => {
-  // sneakerModel
-  //     .findById(req.params.id)
-  //     .then(dbResult => {
-  //         res.render("one_product", {
-  //             product: dbResult
-  //         });
-  //     })
-  //     .catch(next);
-  res.send("Only one pair of shoes");
+router.get("/one-product/:id", (req, res, next) => {
+  sneakerModel
+    .findById(req.params.id)
+    .then(dbResult => {
+      res.render("one_product", {
+        product: dbResult
+      });
+    })
+    .catch(next);
 });
 
 module.exports = router;
