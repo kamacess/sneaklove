@@ -7,23 +7,23 @@
     <nav class="nav-wrapper flexed-item">
       <div class="nav-link-wrapper flexed-item">
         <div class="nav-logo">
-          <a href="/home" class="flexed-item">
+          <a href="/" class="flexed-item">
             <span class="logo-item circle"></span>
-            <h2 class="logo-item">SNEAKLOVE</h2>
+            <h2 class="logo-item">Home</h2>
           </a>
         </div>
         <ul class="nav-link flexed-item">
           <li class="nav-item animated-link">
-            <a href="/sneakers/collection">Collection</a>
+            <a href="/products/collection">Collection</a>
           </li>
           <li class="nav-item animated-link">
-            <a href="/sneakers/men">Men</a>
+            <a href="/products/men">Men</a>
           </li>
           <li class="nav-item animated-link">
-            <a href="/sneakers/women">Women</a>
+            <a href="/products/women">Women</a>
           </li>
           <li class="nav-item animated-link">
-            <a href="/sneakers/kids">Kids</a>
+            <a href="/products/kids">Kids</a>
           </li>
           {{#if isLoggedIn}}
           <li class="nav-item animated-link nav-item-admin">
@@ -37,7 +37,7 @@
       </div>
       <div class="flexed-item nav-end">
         {{#unless isLoggedIn}}
-        <a  href="/signup" id="nav_login" class="button-ternary flexed-item nav-end-item">
+        <a  href="/signin" id="nav_login" class="button-ternary flexed-item nav-end-item">
           <span class="btn-text">Sign in</span>
         </a>
         {{/unless}}

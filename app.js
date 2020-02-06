@@ -10,15 +10,28 @@ const session = require("express-session");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo")(session);
 const cookieParser = require("cookie-parser");
+const path = require("path");
 
 // initial config
-app.set("view engine", "hbs");
-app.set("views", __dirname + "/view");
-app.use(express.static("public"));
-hbs.registerPartials(__dirname + "/views/partials");
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(cookieParser());
+// app.set("view engine", "hbs");
+// app.set("views", __dirname + "/view");
+// app.use(express.static("public"));
+// hbs.registerPartials(__dirname + "/views/partials");
+// app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
+// app.use(cookieParser());
+
+
+//config BW
+app.use(express.urlencoded({ extended: true })); // parse posted data
+app.use(express.json()); // ajax ready
+
+app.use(express.static(path.join(__dirname, "public"))); // static files (public for browsers)
+app.set("views", path.join(__dirname, "views")); // wahre are the pages ?
+app.set("view engine", "hbs"); // which template engine
+hbs.registerPartials(path.join(__dirname, "views/partials")); // where are the tiny chunks of views ?
+
+
 
 // SESSION SETUP
 app.use(
@@ -74,7 +87,7 @@ app.use(eraseSessionMessage());
 // app.use("/", basePageRouter);
 
 // routing
-app.use("/", require("./routes/index"));
+app.use("/", require("./routes"));
 app.use(require("./routes/auth"));
 app.use("/products", require("./routes/products"))
 
