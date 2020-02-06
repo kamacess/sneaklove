@@ -60,6 +60,8 @@ function checkloginStatus(req, res, next) {
   // access this value @ {{user}} or {{user.prop}} in .hbs
   res.locals.isLoggedIn = Boolean(req.session.currentUser);
   // access this value @ {{isLoggedIn}} in .hbs
+  // if (req.session.currentUser) console.log(`Connected as ${res.locals.user.firstname} ${res.locals.user.lastname}`);
+
   next(); // continue to the requested route
 }
 
@@ -82,15 +84,18 @@ function eraseSessionMessage() {
 app.use(checkloginStatus);
 app.use(eraseSessionMessage());
 
-// Getting/Using router(s)
-// const basePageRouter = require("./routes/index");
-// app.use("/", basePageRouter);
+// Routing
+app.use("/", require("./routes/index"));
 
-// routing
-app.use("/", require("./routes"));
+// Authentication
 app.use(require("./routes/auth"));
+
+// Protected routes
 app.use(require("./routes/admin"));
+
 app.use("/products", require("./routes/products"));
+
+// For testing API
 app.use("/sneakers", require("./routes/sneakers"));
 app.use("/users", require("./routes/users"));
 app.use("/tags", require("./routes/tags"));

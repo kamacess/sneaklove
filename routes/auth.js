@@ -22,10 +22,19 @@ router.post("/signin", async (req, res) => {
   const user = await db.userFindByEmail(email);
   if (!user) return res.redirect("/signin");
   if (!bcrypt.compareSync(password, user.password)) return res.redirect("/signin");
-  res.redirect("/admin");
+  // User credentials match: set user session and redirect to admin page
+  req.session.currentUser = userController.setSession(user);
+  req.session.msg = `Welcome ${user.firstname}`;
+  res.redirect("/prod-manage");
 });
 
 // Logout
-router.get("/logout", (req, res) => res.redirect("/"));
+router.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.locals.user = null;
+    res.locals.isLoggedIn = null;
+  });
+  res.redirect("/");
+});
 
 module.exports = router;

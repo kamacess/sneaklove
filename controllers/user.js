@@ -35,8 +35,9 @@ exports.create = async (req, res, next) => {
       password: hashedPassword
     });
     console.log(createdUser);
-    //res.json(createdUser);
-    res.redirect("/products_manage")
+    req.session.currentUser = setSession(createdUser);
+    req.session.msg = `Welcome ${user.firstname}`;
+    res.redirect("/prod-manage");
   } catch (error) {
     res.json(error);
   }
@@ -67,4 +68,8 @@ exports.delete = async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+exports.setSession = user => {
+  return { id: user._id, firstname: user.firstname, lastname: user.lastname };
 };
