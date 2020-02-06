@@ -70,9 +70,14 @@ app.use(checkloginStatus);
 app.use(eraseSessionMessage());
 
 // Getting/Using router(s)
-const basePageRouter = require("./routes/index");
-app.use("/", basePageRouter);
+// const basePageRouter = require("./routes/index");
+// app.use("/", basePageRouter);
+
+// routing
+app.use("/", require("./routes/index"));
+app.use(require("./routes/auth"));
+app.use("/products", require("./routes/products"))
+
 
 // Export app
-
 module.exports = app;
