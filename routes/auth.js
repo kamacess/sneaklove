@@ -9,17 +9,26 @@ const tagController = require("./../controllers/tag");
 // ROUTES PAS PREFIXÉES
 // *********************************/
 
-router.get("/signup", (req, res) => {
-  res.send("This is where the user signs up");
-});
-
-router.get("/signin", (req, res) => {
-  res.send("This is where the user signs in");
-});
-
 // action : registering
+router.get("/signup", (req, res) => {
+  res.render("prod_management/signup");
+});
+
+router.post("/signup", userController.create);
 
 // action : loging in
+router.get("/signin", (req, res) => {
+  res.render("prod_management/signin");
+});
+
+router.post("/signin", (req, res) => {
+    res.render("prod_management/products_manage")
+})
+
+router.get("/products_manage", (req, res) => {
+    res.render("prod_management/products_manage")
+})
+
 
 // action : logging out
 

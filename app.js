@@ -92,6 +92,7 @@ app.use(eraseSessionMessage());
 app.use("/", require("./routes"));
 app.use(require("./routes/auth"));
 app.use("/products", require("./routes/products"));
+app.use("/sneakers", require("./routes/sneakers"));
 app.use("/users", require("./routes/users"));
 app.use("/tags", require("./routes/tags"));
 
