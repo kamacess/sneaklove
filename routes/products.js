@@ -8,51 +8,47 @@ const tagModel = require("../models/Tag")
 // *********************************/
 
 router.get("/collection", (req, res, next) => {
-    // sneakerModel
-    //     .find()
-    //     .then(dbResults => {
-    //         res.render("products.hbs", {
-    //             products: dbResults
-    //         });
-    //     })
-    //     .catch(next);
-    res.render("products")
+    sneakerModel
+        .find()
+        .then(sneakers => {
+            res.render("products", {
+                products: sneakers
+            });
+        })
+        .catch(next);
 })
 
 router.get("/men", (req, res, next) => {
-    // sneakerModel
-    //     .find()
-    //     .then(dbResults => {
-    //         res.render("products.hbs", {
-    //             products: dbResults
-    //         });
-    //     })
-    //     .catch(next);
-    res.render("products-men")
+    sneakerModel
+        .find({ category: "men" })
+        .then(sneakers => {
+            res.render("products-men", {
+                products: sneakers
+            });
+        })
+        .catch(next);
 })
 
 router.get("/women", (req, res, next) => {
-    // sneakerModel
-    //     .find()
-    //     .then(dbResults => {
-    //         res.render("products.hbs", {
-    //             products: dbResults
-    //         });
-    //     })
-    //     .catch(next);
-    res.render("products-women")
+    sneakerModel
+        .find({ category: "women" })
+        .then(dbResults => {
+            res.render("products-women", {
+                products: dbResults
+            });
+        })
+        .catch(next);
 })
 
 router.get("/kids", (req, res, next) => {
-    // sneakerModel
-    //     .find()
-    //     .then(dbResults => {
-    //         res.render("products.hbs", {
-    //             products: dbResults
-    //         });
-    //     })
-    //     .catch(next);
-    res.render("products-kids")
+    sneakerModel
+        .find({ category: "kids" })
+        .then(dbResults => {
+            res.render("products-kids", {
+                products: dbResults
+            });
+        })
+        .catch(next);
 })
 
 router.get("/one/:id", (req, res, next) => {
