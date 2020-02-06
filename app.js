@@ -30,10 +30,8 @@ app.set("views", path.join(__dirname, "views")); // wahre are the pages ?
 app.set("view engine", "hbs"); // which template engine
 hbs.registerPartials(path.join(__dirname, "views/partials")); // where are the tiny chunks of views ?
 
-
 //session login middleware
 // app.use(require("./middlewares/exposeLoginStatus"));
-
 
 // SESSION SETUP
 app.use(
@@ -91,6 +89,7 @@ app.use(eraseSessionMessage());
 // routing
 app.use("/", require("./routes"));
 app.use(require("./routes/auth"));
+app.use(require("./routes/admin"));
 app.use("/products", require("./routes/products"));
 app.use("/sneakers", require("./routes/sneakers"));
 app.use("/users", require("./routes/users"));
