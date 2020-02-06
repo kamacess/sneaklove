@@ -30,6 +30,11 @@ app.set("views", path.join(__dirname, "views")); // wahre are the pages ?
 app.set("view engine", "hbs"); // which template engine
 hbs.registerPartials(path.join(__dirname, "views/partials")); // where are the tiny chunks of views ?
 
+
+//session login middleware
+// app.use(require("./middlewares/exposeLoginStatus"));
+
+
 // SESSION SETUP
 app.use(
   session({
