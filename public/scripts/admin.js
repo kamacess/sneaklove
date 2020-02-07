@@ -43,12 +43,18 @@ function renderTagSelect(data) {
 const tagFilters = document.getElementById("tag_list");
 
 if (tagFilters) {
-  const tagListItems = document.querySelectorAll(".tag-list-item");
+  const tagListItems = document.querySelectorAll(".tag-list-item input");
   tagListItems.forEach(item => {
     item.onclick = () => {
-      api.getSneakersByTag(item.getAttribute("data-tag-id"), result => {
-        filterProducts(result);
-      });
+      if (item.checked) {
+        api.getSneakersByTag(item.getAttribute("data-tag-id"), result => {
+          filterProducts(result);
+        });
+      } else {
+        api.getAllSneakers(result => {
+          filterProducts(result);
+        });
+      }
     };
   });
 }

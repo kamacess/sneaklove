@@ -14,6 +14,15 @@ export default class apiHandler {
     }
   }
 
+  async getAllSneakers(callback) {
+    try {
+      const sneakers = await this.api.get("/sneakers");
+      callback(sneakers.data);
+    } catch (error) {
+      callback(error);
+    }
+  }
+
   async getSneakersByTag(id, callback) {
     try {
       const sneakers = await this.api.get("/sneakers/tags/" + id);
