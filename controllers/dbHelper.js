@@ -65,6 +65,11 @@ function sneakerViewAll() {
   return sneakerModel.find();
 }
 
+function sneakerViewCategory(category = null) {
+  if (!category) return sneakerModel.find();
+  return sneakerModel.find({ category: category });
+}
+
 function sneakerFindByRef(ref) {
   return sneakerModel.findOne({ ref: ref });
 }
@@ -93,6 +98,7 @@ module.exports = {
   sneakerCreate,
   sneakerView,
   sneakerViewAll,
+  sneakerViewCategory,
   sneakerFindByRef,
   sneakerDelete,
   sneakerEdit
