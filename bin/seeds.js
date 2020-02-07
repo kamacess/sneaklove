@@ -4,7 +4,7 @@ const sneakers = [
     {
         name: "test",
           ref: "1",
-          sizes:[37,38,39,40,41,42,43,44,45,46],
+          sizes:42,
           description: "shoes 1",
           image: "",
           price: 60,
@@ -13,7 +13,7 @@ const sneakers = [
     {
         name: "test",
           ref: "2",
-          sizes:[16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35],
+          sizes:22,
           description: "shoes 2",
           image: "",
           price: 20,
@@ -22,7 +22,7 @@ const sneakers = [
     {
         name: "test",
           ref: "3",
-          sizes:[35,36,37,38,39,40,41,42,43,44,45,46],
+          sizes:37,
           description: "shoes 3",
           image: "",
           price: 50,
@@ -31,7 +31,7 @@ const sneakers = [
     {
         name: "test",
           ref: "4",
-          sizes:[16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
+          sizes:26,
           description: "shoes 4",
           image: "",
           price: 30,
@@ -40,7 +40,7 @@ const sneakers = [
     {
         name: "test",
           ref: "5",
-          sizes:[37,38,39,40,41,42,43,44,45,46],
+          sizes:40,
           description: "shoes 5",
           image: "",
           price: 80,
@@ -49,7 +49,7 @@ const sneakers = [
     {
         name: "test",
           ref: "6",
-          sizes:[36,37,38,39,40,41,42,43,44,45,46],
+          sizes:44,
           description: "shoes 6",
           image: "",
           price: 70,
@@ -58,7 +58,7 @@ const sneakers = [
     {
         name: "test",
           ref: "7",
-          sizes:[16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39],
+          sizes:21,
           description: "shoes 7",
           image: "",
           price: 40,
@@ -67,7 +67,7 @@ const sneakers = [
     {
         name: "test",
           ref: "8",
-          sizes:[34,35,36,37,38,39,40,41,42,43],
+          sizes:38,
           description: "shoes 8",
           image: "",
           price: 90,

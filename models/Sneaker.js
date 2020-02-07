@@ -13,7 +13,7 @@ const sneakerSchema = new Schema({
     // unique: true
   },
   sizes: {
-    type: [Number],
+    type: Number,
     min: 16,
     max: 46,
     required: true
