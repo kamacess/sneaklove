@@ -46,7 +46,7 @@ exports.edit = async (req, res, next) => {
   }
 };
 
-exports.delete = async (req, res, next) => {
+exports.deleteSneaker = async (req, res, next) => {
   try {
     const deletedSneaker = await db.sneakerDelete(req.params.id);
     console.log(deletedSneaker);
