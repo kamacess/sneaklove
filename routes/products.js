@@ -62,4 +62,13 @@ router.get("/one-product/:id", (req, res, next) => {
     .catch(next);
 });
 
+router.get("/product-edit/:id", (req, res, next) => {
+  sneakerModel
+    .findById(req.params.id)
+    .then(dbRes => {
+      res.render("prod_management/product_edit", { product: dbRes });
+    })
+    .catch(next);
+});
+
 module.exports = router;
