@@ -38,8 +38,6 @@ async function userCreate(req, res, next) {
       email,
       password: hashedPassword
     });
-    console.log("---------->", createdUser);
-    console.log("---------->", typeof setSession);
     req.session.currentUser = setSession(createdUser);
     res.redirect("/prod-manage");
   } catch (error) {
