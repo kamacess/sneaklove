@@ -4,6 +4,8 @@ const sneakerController = require("../controllers/sneaker");
 
 router.get("/", sneakerController.viewAll);
 
+router.get("/tags/:id", sneakerController.findAllByTag);
+
 router.get("/:id", sneakerController.view);
 
 router.post("/", sneakerController.create);

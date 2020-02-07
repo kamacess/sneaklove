@@ -7,13 +7,11 @@ const tagModel = require("../models/Tag");
 // ROUTES PREFIXEES AVEC "/products"
 // *********************************/
 
-
 // const displayTags = tagModel
 //   .find()
 //   .then(tags=> {
 //     res
 //   })
-
 
 // router.get("/collection", (req, res, next) => {
 //   sneakerModel
@@ -39,8 +37,9 @@ router.get("/collection", (req, res, next) => {
       const tags = dbRes[1];
       res.render("products", {
         products,
-        tags
-      })
+        tags,
+        scripts: ["admin.js"]
+      });
     })
     .catch(next);
 });
@@ -52,15 +51,12 @@ router.get("/:category", (req, res, next) => {
       const tags = dbRes[1];
       res.render("products", {
         products,
-        tags
-      })
+        tags,
+        scripts: ["admin.js"]
+      });
     })
     .catch(next);
 });
-
-
-
-
 
 // router.get("/:category", (req, res, next) => {
 //   sneakerModel
@@ -72,8 +68,6 @@ router.get("/:category", (req, res, next) => {
 //     })
 //     .catch(next);
 // });
-
-
 
 router.get("/one-product/:id", (req, res, next) => {
   sneakerModel
@@ -90,13 +84,12 @@ router.get("/product-edit/:id", (req, res, next) => {
   sneakerModel
     .findById(req.params.id)
     .then(dbRes => {
-      res.render("prod_management/product_edit",
-        {
-          product: dbRes,
-          testMen: dbRes.category === "men",
-          testKids: dbRes.category === "kids",
-          testWomen: dbRes.category === "women"
-        });
+      res.render("prod_management/product_edit", {
+        product: dbRes,
+        testMen: dbRes.category === "men",
+        testKids: dbRes.category === "kids",
+        testWomen: dbRes.category === "women"
+      });
     })
     .catch(next);
 });

@@ -74,6 +74,10 @@ function sneakerFindByRef(ref) {
   return sneakerModel.findOne({ ref: ref });
 }
 
+function sneakerFindAllByTag(id) {
+  return sneakerModel.find({ tags: id });
+}
+
 function sneakerDelete(id) {
   return sneakerModel.findByIdAndDelete(id);
 }
@@ -100,6 +104,7 @@ module.exports = {
   sneakerViewAll,
   sneakerViewCategory,
   sneakerFindByRef,
+  sneakerFindAllByTag,
   sneakerDelete,
   sneakerEdit
 };

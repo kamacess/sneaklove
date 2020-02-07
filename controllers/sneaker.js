@@ -20,10 +20,20 @@ exports.viewAll = async (req, res, next) => {
   }
 };
 
+exports.findAllByTag = async (req, res, next) => {
+  try {
+    const sneakers = await db.sneakerFindAllByTag(req.params.id);
+    console.log(sneakers);
+    res.json(sneakers);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
 exports.create = async (req, res, next) => {
   try {
-    const { name, ref, sizes, description, image, price, category, tags } = req.body;
-    if (!name || !ref || !sizes || !description || !price || !image || !category || !tags) throw new Error("A field is missing.");
+    const { name, ref, sizes, description, price, category, tags } = req.body;
+    if (!name || !ref || !sizes || !description || !price || !req.file.url || !category || !tags) throw new Error("A field is missing.");
     const checkRef = await db.sneakerFindByRef(ref);
     if (checkRef) throw new Error("There is already a sneaker with this ref.");
     const createdSneaker = await db.sneakerCreate({ name, ref, sizes, description, image: req.file.url, price, category, tags });

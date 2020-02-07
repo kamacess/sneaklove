@@ -14,6 +14,15 @@ export default class apiHandler {
     }
   }
 
+  async getSneakersByTag(id, callback) {
+    try {
+      const sneakers = await this.api.get("/sneakers/tags/" + id);
+      callback(sneakers.data);
+    } catch (error) {
+      callback(error);
+    }
+  }
+
   async addTag(name, callback) {
     try {
       const addedTag = await this.api.post("/tags", { name: name });
