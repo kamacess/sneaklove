@@ -46,8 +46,8 @@ exports.create = async (req, res, next) => {
     const checkRef = await db.sneakerFindByRef(ref);
     if (checkRef) throw new Error("There is already a sneaker with this ref.");
     const createdSneaker = await db.sneakerCreate({ name, ref, sizes, description, image: req.file.url, price, category, tags });
-    console.log(createdSneaker);
-    res.render("prod_management/products_add");
+    // console.log(createdSneaker);
+    res.redirect("/products/collection");
   } catch (error) {
     next(error);
   }
