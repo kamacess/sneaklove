@@ -3,11 +3,11 @@ const sneakerModel = require("../models/Sneaker.js");
 const tagModel = require("../models/Tag.js");
 
 const tags = [
-    { name: boots },
-    { name: ballerine },
-    { name: sneakers },
-    { name: blue },
-    { name: red },
+    { name: "boots" },
+    { name: "ballerine" },
+    { name: "sneakers" },
+    { name: "blue" },
+    { name: "red" },
 ]
 
 
