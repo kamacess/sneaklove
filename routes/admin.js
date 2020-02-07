@@ -1,9 +1,11 @@
 const express = require("express");
 const router = new express.Router();
+const db = require("./../controllers/dbHelper");
 
 // Product Dahsboard
-router.get("/prod-manage", (req, res) => {
-  res.render("prod_management/products_manage");
+router.get("/prod-manage", async (req, res) => {
+  const sneakers = await db.sneakerViewAll();
+  res.render("prod_management/products_manage", { sneakers: sneakers });
 });
 
 // Add Product
