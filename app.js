@@ -12,6 +12,7 @@ const MongoStore = require("connect-mongo")(session);
 const cookieParser = require("cookie-parser");
 const path = require("path");
 
+
 // initial config
 // app.set("view engine", "hbs");
 // app.set("views", __dirname + "/view");
