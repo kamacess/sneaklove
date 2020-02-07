@@ -87,12 +87,14 @@ router.get("/one-product/:id", (req, res, next) => {
 });
 
 router.get("/product-edit/:id", (req, res, next) => {
-  sneakerModel
-    .findById(req.params.id)
+  Promise.all([sneakerModel.findById(req.params.id),tagModel.find()])
     .then(dbRes => {
+      const product = dbRes[0];
+      const tags = dbRes[1];
       res.render("prod_management/product_edit",
         {
-          product: dbRes,
+          product,
+          tags,
           testMen: dbRes.category === "men",
           testKids: dbRes.category === "kids",
           testWomen: dbRes.category === "women"
@@ -101,8 +103,10 @@ router.get("/product-edit/:id", (req, res, next) => {
     .catch(next);
 });
 
+
+
 router.post("/product-edit/:id", (req, res, next) => {
-  const { name, ref, sizes, description, image, price, category, tags } = req.body;
+  const { name, ref, sizes, description, price, category, tags } = req.body;
 
   sneakerModel
     .findByIdAndUpdate(req.params.id, {
@@ -110,7 +114,6 @@ router.post("/product-edit/:id", (req, res, next) => {
       ref,
       sizes,
       description,
-      image,
       price,
       category,
       tags
