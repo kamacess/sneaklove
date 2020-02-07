@@ -16,7 +16,7 @@ router.get("/prod-manage", async (req, res) => {
 // Add Product
 router.get("/prod-add", async (req, res) => {
   const allTags = await db.tagViewAll();
-  res.render("prod_management/products_add", { tags: allTags });
+  res.render("prod_management/products_add", { tags: allTags, scripts: ["admin.js"] });
 });
 
 router.post("/prod-add", fileUploader.single("image"), sneakerController.create);
