@@ -78,6 +78,10 @@ function sneakerFindAllByTag(id) {
   return sneakerModel.find({ tags: id });
 }
 
+function sneakerFindAllByTags(ids) {
+  return sneakerModel.find({ tags: { $in: ids.split(",") } });
+}
+
 function sneakerDelete(id) {
   return sneakerModel.findByIdAndDelete(id);
 }
@@ -105,6 +109,7 @@ module.exports = {
   sneakerViewCategory,
   sneakerFindByRef,
   sneakerFindAllByTag,
+  sneakerFindAllByTags,
   sneakerDelete,
   sneakerEdit
 };

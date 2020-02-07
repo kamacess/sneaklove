@@ -30,6 +30,15 @@ exports.findAllByTag = async (req, res, next) => {
   }
 };
 
+exports.findAllByTags = async (req, res, next) => {
+  try {
+    const sneakers = await db.sneakerFindAllByTags(req.params.id);
+    res.json(sneakers);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
 exports.create = async (req, res, next) => {
   try {
     const { name, ref, sizes, description, price, category, tags } = req.body;

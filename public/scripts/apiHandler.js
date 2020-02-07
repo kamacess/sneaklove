@@ -32,6 +32,15 @@ export default class apiHandler {
     }
   }
 
+  async getSneakersByTags(ids, callback) {
+    try {
+      const sneakers = await this.api.get("/sneakers/tags/" + ids);
+      callback(sneakers.data);
+    } catch (error) {
+      callback(error);
+    }
+  }
+
   async addTag(name, callback) {
     try {
       const addedTag = await this.api.post("/tags", { name: name });

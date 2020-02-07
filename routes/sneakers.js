@@ -4,7 +4,7 @@ const sneakerController = require("../controllers/sneaker");
 
 router.get("/", sneakerController.viewAll);
 
-router.get("/tags/:id", sneakerController.findAllByTag);
+router.get("/tags/:id", sneakerController.findAllByTags);
 
 router.get("/:id", sneakerController.view);
 

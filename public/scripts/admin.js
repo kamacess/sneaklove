@@ -44,16 +44,22 @@ const tagFilters = document.getElementById("tag_list");
 
 if (tagFilters) {
   const tagListItems = document.querySelectorAll(".tag-list-item input");
+  let ids = [];
   tagListItems.forEach(item => {
     item.onclick = () => {
+      const id = item.getAttribute("data-tag-id");
       if (item.checked) {
-        api.getSneakersByTag(item.getAttribute("data-tag-id"), result => {
-          filterProducts(result);
-        });
+        ids.push(id);
       } else {
-        api.getAllSneakers(result => {
-          filterProducts(result);
-        });
+        ids.splice(
+          ids.findIndex(el => el === id),
+          1
+        );
+      }
+      if (ids.length) {
+        api.getSneakersByTags(ids.join(), result => filterProducts(result));
+      } else {
+        api.getAllSneakers(result => filterProducts(result));
       }
     };
   });
