@@ -10,6 +10,6 @@ router.post("/", sneakerController.create);
 
 router.patch("/:id/edit", sneakerController.edit);
 
-router.delete("/:id/delete", sneakerController.delete);
+router.delete("/:id/delete", sneakerController.deleteSneaker);
 
 module.exports = router;
