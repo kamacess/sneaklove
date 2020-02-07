@@ -1,7 +1,7 @@
 const db = require("./dbHelper");
 const bcrypt = require("bcryptjs");
 
-exports.view = async (req, res, next) => {
+async function userView(req, res, next) {
   try {
     const user = await db.userView(req.params.id);
     console.log(user);
@@ -9,9 +9,9 @@ exports.view = async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-exports.viewAll = async (req, res, next) => {
+async function userViewAll(req, res, next) {
   try {
     const allUsers = await db.userViewAll();
     console.log(allUsers);
@@ -19,9 +19,13 @@ exports.viewAll = async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-exports.create = async (req, res, next) => {
+function setSession(user) {
+  return { id: user._id, firstname: user.firstname, lastname: user.lastname };
+}
+
+async function userCreate(req, res, next) {
   try {
     const { firstname, lastname, email, password } = req.body;
     if (!firstname || !lastname || !email || !password) throw new Error("All fields are required.");
@@ -34,16 +38,16 @@ exports.create = async (req, res, next) => {
       email,
       password: hashedPassword
     });
-    console.log(createdUser);
+    console.log("---------->", createdUser);
+    console.log("---------->", typeof setSession);
     req.session.currentUser = setSession(createdUser);
-    req.session.msg = `Welcome ${user.firstname}`;
     res.redirect("/prod-manage");
   } catch (error) {
-    res.json(error);
+    next(error);
   }
-};
+}
 
-exports.edit = async (req, res, next) => {
+async function userEdit(req, res, next) {
   try {
     const id = req.params.id;
     const { firstname, lastname, email, password } = req.body;
@@ -58,9 +62,9 @@ exports.edit = async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-exports.delete = async (req, res, next) => {
+async function userDelete(req, res, next) {
   try {
     const deletedUser = await db.userDelete(req.params.id);
     console.log(deletedUser);
@@ -68,8 +72,13 @@ exports.delete = async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-exports.setSession = user => {
-  return { id: user._id, firstname: user.firstname, lastname: user.lastname };
+module.exports = {
+  view: userView,
+  viewAll: userViewAll,
+  create: userCreate,
+  edit: userEdit,
+  delete: userDelete,
+  setSession: setSession
 };
