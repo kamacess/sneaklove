@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const sneakerModel = require("../models/Sneaker.js");
 const sneakers = [
     {
-        name: "test",
+        name: "converse",
           ref: "1",
-          sizes:42,
-          description: "shoes 1",
-          image: "",
-          price: 60,
-          category: "men",
+          sizes:39,
+          description: "Chuck Taylor All Star Ox W - Bleu",
+          image: "https://cdn.sarenza.net/_img/productsv4/0000010185/0000010185_7239_09_504x690.jpg?201812212345&v=20200207103834&interpolation=lanczos-none&fit=inside|650:890",
+          price: 129,
+          category: "women",
     },
     {
         name: "test",
